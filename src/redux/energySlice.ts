@@ -131,15 +131,15 @@ export const energySlice = createSlice({
       if (state.energy <= 10)
         state.energy += 1
     },
-    decrementEnemyEnergyGain: (state, action: PayloadAction<number>) => {
+    decrementEnemyEnergyGain: (state) => {
       if (state.energy > 0)
         state.energy -= 1
     },
-    incrementEnemyEnergyDestroy: (state, action: PayloadAction<number>) => {
+    incrementEnemyEnergyDestroy: (state) => {
       if (state.energy > 0)
         state.energy -= 1
     },
-    decrementEnemyEnergyDestroy: (state, action: PayloadAction<number>) => {
+    decrementEnemyEnergyDestroy: (state) => {
       if (state.energy <= 10)
         state.energy += 1
     },
