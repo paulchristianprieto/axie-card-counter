@@ -1,99 +1,97 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+export type Cards = {
+  mouth: Card
+  horn: Card
+  back: Card
+  tail: Card
+}
+
 export interface Card {
-  part: string,
-  energyCost: number,
-  used: number,
+  energyCost: number
+  used: number
 }
 
 export interface Axies {
-  axie1: Card[]
-  axie2: Card[]
-  axie3: Card[]
+  axie1: Cards
+  axie2: Cards
+  axie3: Cards
 }
 
 const initialState: Axies = {
-  axie1: [
-    {
-      part: "mouth",
+  axie1: {
+    mouth: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "horn",
+    horn: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "back",
+    back: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "tail",
+    tail: {
       energyCost: 1,
       used: 0,
     },
-  ],
-  axie2: [
-    {
-      part: "mouth",
+  },
+  axie2: {
+    mouth: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "horn",
+    horn: {
+
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "back",
+    back: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "tail",
+    tail: {
       energyCost: 1,
       used: 0,
     },
-  ],
-  axie3: [
-    {
-      part: "mouth",
+  },
+  axie3: {
+    mouth: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "horn",
+    horn: {
+
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "back",
+    back: {
       energyCost: 1,
       used: 0,
     },
-    {
-      part: "tail",
+    tail: {
       energyCost: 1,
       used: 0,
     },
-  ]
+  },
 }
+
+export interface UseCardPayload {
+  key: keyof Axies
+  part: keyof Cards
+}
+
 
 export const counterSlice = createSlice({
   name: 'axieCards',
   initialState,
   reducers: {
-    increment: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      // state.value += 1
+    incrementUsedCard: (state, action: PayloadAction<UseCardPayload>) => {
+      state[action.payload.key][action.payload.part].used += 1
     },
-    decrement: (state) => {
-      // state.value -= 1
+    decrementUsedCard: (state, action: PayloadAction<UseCardPayload>) => {
+      state[action.payload.key][action.payload.part].used -= 1
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       // state.value += action.payload
@@ -102,6 +100,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { incrementUsedCard, decrementUsedCard, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer

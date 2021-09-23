@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cardCounter from './cardCounter'
+import energyCounter from './energySlice'
 
 export const store = configureStore({
   reducer: {
-    cardCounter
+    energyCounter
   },
 })
 
