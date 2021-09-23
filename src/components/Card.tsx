@@ -69,22 +69,22 @@ export const CardComponent = ({ cardPart, axie }: CardComponentProps) => {
     <div className="flex flex-1">
       <div className={`flex flex-1 justify-center items-center`}>
         <div className={`border border-black p-4`}>
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row justify-between items-center mb-2">
             <div className="mr-2">{part[cardPart]}</div>
             <div
               onClick={handleChangeEnergyCost}
               className="flex items-center justify-center rounded-full bg-yellow-500 p-2 cursor-pointer select-none"
-              style={{ width: 24, height: 24 }}
+              style={{ width: 30, height: 30 }}
             >
               {details.energyCost}
             </div>
           </div>
+
           <div className="flex flex-col">
-            <p>Used: </p>
             <div className="flex flex-row justify-between">
               <div
                 onClick={handleUnuseCard}
-                className="border border-gray-800 cursor-pointer p-1" >
+                className="border border-gray-800 cursor-pointer p-1 select-none" >
                 {/* <img src={minus} width={20} /> */}
                 <div className="flex justify-center items-center" style={{ width: 20, height: 20 }}>
                   {details.used}
@@ -92,7 +92,7 @@ export const CardComponent = ({ cardPart, axie }: CardComponentProps) => {
               </div>
               <div
                 onClick={handleUseCard}
-                className="border border-gray-800 cursor-pointer p-1"
+                className="border border-gray-800 cursor-pointer p-1 select-none"
               >
                 <img src={plus} width={20} />
               </div>

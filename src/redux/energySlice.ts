@@ -143,9 +143,7 @@ export const energySlice = createSlice({
       if (state.energy <= 10)
         state.energy += 1
     },
-    reset: (state) => {
-      state = initialState
-    },
+    reset: (state) => initialState,
   },
 })
 
@@ -158,7 +156,8 @@ export const {
   incrementEnemyEnergyGain,
   decrementEnemyEnergyGain,
   incrementEnemyEnergyDestroy,
-  decrementEnemyEnergyDestroy
+  decrementEnemyEnergyDestroy,
+  reset
 } = energySlice.actions
 
 export default energySlice.reducer

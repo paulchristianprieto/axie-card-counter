@@ -6,6 +6,7 @@ import {
   decrementEnemyEnergyDestroy,
   decrementEnemyEnergyGain,
   endTurn,
+  reset,
   incrementEnemyEnergyDestroy,
   incrementEnemyEnergyGain,
   // unuseCard,
@@ -13,38 +14,52 @@ import {
 } from '../redux/energySlice'
 
 export const Main = () => {
-  const { axie1, axie2, axie3 } = useSelector((state: RootState) => state.energyCounter.axies)
+  const { energy, round, axies: { axie1, axie2, axie3 } } = useSelector((state: RootState) => state.energyCounter)
+  const dispatch = useDispatch()
 
-  console.log(axie1)
+  const handleEndTurn = () => {
+    dispatch(endTurn())
+  }
+
+  const handleReset = () => {
+    dispatch(reset())
+  }
 
   return (
     <div>
-      <header className="container mx-auto ">
-        <div>
-          <div className="p-2 mt-2">Front Axie</div>
-          <div className="grid grid-cols-4 ">
-            {Object.keys(axie1).map((card: any) => {
-              return <CardComponent cardPart={card} axie="axie1" />;
-            })}
+      <div className="container mx-auto ">
+        <div>Energy: {energy}</div>
+        <div>Round: {round}</div>
+        <div className="my-4">
+          <div>
+            <div className="p-2 mt-2">Front Axie</div>
+            <div className="grid grid-cols-4 ">
+              {Object.keys(axie1).map((card: any) => {
+                return <CardComponent cardPart={card} axie="axie1" />;
+              })}
+            </div>
+          </div>
+          <div>
+            <div className="p-2 mt-2">Mid Axie</div>
+            <div className="grid grid-cols-4 ">
+              {Object.keys(axie2).map((card: any) => {
+                return <CardComponent cardPart={card} axie="axie2" />;
+              })}
+            </div>
+          </div>
+          <div>
+            <div className="p-2 mt-2">Back Axie</div>
+            <div className="grid grid-cols-4 ">
+              {Object.keys(axie3).map((card: any) => {
+                return <CardComponent cardPart={card} axie="axie3" />;
+              })}
+            </div>
           </div>
         </div>
-        <div>
-          <div className="p-2 mt-2">Mid Axie</div>
-          <div className="grid grid-cols-4 ">
-            {Object.keys(axie2).map((card: any) => {
-              return <CardComponent cardPart={card} axie="axie2" />;
-            })}
-          </div>
-        </div>
-        <div>
-          <div className="p-2 mt-2">Back Axie</div>
-          <div className="grid grid-cols-4 ">
-            {Object.keys(axie3).map((card: any) => {
-              return <CardComponent cardPart={card} axie="axie3" />;
-            })}
-          </div>
-        </div>
-      </header>
+
+        <div onClick={handleEndTurn} className="flex justify-center items-center border border-black mb-2 cursor-pointer">End Turn</div>
+        <div onClick={handleReset} className="flex justify-center items-center border border-black cursor-pointer">Reset</div>
+      </div>
     </div>
   );
 }
