@@ -22,6 +22,10 @@ export const Main = () => {
   const [destroy, setDestroy] = useState<number>(0)
   const [gain, setGain] = useState<number>(0)
 
+  const [axie1Color, setAxie1Color] = useState<string>('#52b788')
+  const [axie2Color, setAxie2Color] = useState<string>('#f2cc8f')
+  const [axie3Color, setAxie3Color] = useState<string>('#ffafcc')
+
   const handleEndTurn = () => {
     dispatch(endTurn())
   }
@@ -46,7 +50,6 @@ export const Main = () => {
               }
             }}
             className="border border-gray-800 cursor-pointer p-1 select-none mr-2" >
-            {/* <img src={minus} width={20} /> */}
             <div className="flex justify-center items-center select-none" style={{ width: 20, height: 20 }}>
               {gain}
             </div>
@@ -92,24 +95,33 @@ export const Main = () => {
         </div>
 
         <div className="my-4">
-          <div>
-            <div className="p-2 mt-2">Front Axie</div>
+          <div className="p-2" style={{ backgroundColor: axie1Color }}>
+            <div className="flex flex-row mb-2">
+              <div className="">Front Axie</div>
+              {/* <div>Change Color</div> */}
+            </div>
             <div className="grid grid-cols-4 ">
               {Object.keys(axie1).map((card: any) => {
-                return <CardComponent cardPart={card} axie="axie1" />;
+                return <CardComponent cardPart={card} axie="axie1" color="" />;
               })}
             </div>
           </div>
-          <div>
-            <div className="p-2 mt-2">Mid Axie</div>
+          <div className="p-2" style={{ backgroundColor: axie2Color }}>
+            <div className="flex flex-row mb-2">
+              <div className="">Mid Axie</div>
+              {/* <div>Change Color</div> */}
+            </div>
             <div className="grid grid-cols-4 ">
               {Object.keys(axie2).map((card: any) => {
                 return <CardComponent cardPart={card} axie="axie2" />;
               })}
             </div>
           </div>
-          <div>
-            <div className="p-2 mt-2">Back Axie</div>
+          <div className="p-2" style={{ backgroundColor: axie3Color }}>
+            <div className="flex flex-row mb-2">
+              <div className="">Back Axie</div>
+              {/* <div>Change Color</div> */}
+            </div>
             <div className="grid grid-cols-4 ">
               {Object.keys(axie3).map((card: any) => {
                 return <CardComponent cardPart={card} axie="axie3" />;
