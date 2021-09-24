@@ -76,7 +76,7 @@ export const CardComponent = ({ cardPart, axie, color }: CardComponentProps) => 
       return 'bg-red-500'
     }
     if (details.used > 2) {
-      return 'bg-orange-500'
+      return 'bg-pink-700'
     }
   }
 
