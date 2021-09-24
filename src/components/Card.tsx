@@ -107,7 +107,7 @@ export const CardComponent = ({ cardPart, axie, color }: CardComponentProps) => 
               </div>
               <div
                 onClick={handleUseCard}
-                className="border border-gray-800 cursor-pointer p-1 select-none rounded-d"
+                className="border border-gray-800 cursor-pointer p-1 select-none rounded-md"
               >
                 <img src={plus} width={20} />
               </div>
