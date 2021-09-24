@@ -28,10 +28,14 @@ export const Main = () => {
 
   const handleEndTurn = () => {
     dispatch(endTurn())
+    setDestroy(0)
+    setGain(0)
   }
 
   const handleReset = () => {
     dispatch(reset())
+    setDestroy(0)
+    setGain(0)
   }
 
   return (
